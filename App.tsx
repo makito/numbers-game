@@ -1,18 +1,12 @@
 import React, { FC } from 'react';
-import { StyleSheet, View } from 'react-native';
 
+import { Screen } from './components/Screen';
 import { Header } from './components/Header';
 
 const App: FC = () => (
-  <View style={styles.screen}>
+  <Screen>
     <Header title="Guess a Number" />
-  </View>
+  </Screen>
 );
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1
-  }
-});
 
 export default App;
