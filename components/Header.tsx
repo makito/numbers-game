@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+import Colors from '../constants/colors';
+
 export const Header: FC<{ title: string }> = ({ title }) => (
   <View style={styles.header}>
     <Text style={styles.headerTitle}>{title}</Text>
@@ -12,7 +14,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 90,
     paddingTop: 36,
-    backgroundColor: '#3fd41a',
+    backgroundColor: Colors.primary,
     alignItems: 'center',
     justifyContent: 'center'
   },
