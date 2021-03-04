@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, ReactElement, useState } from 'react';
 import { StyleSheet, View, Text, Button, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 import { Card } from '../components/Card';
@@ -7,10 +7,34 @@ import Colors from '../constants/colors';
 
 export const StartGameScreen: FC = () => {
   const [enteredValue, setEnteredValue] = useState('');
+  const [confirmed, setConfirmed] = useState(false);
+  const [selectedNumber, setCelectedNumber] = useState(0);
 
   const numberInputHandler = (inputText: string): void => {
     setEnteredValue(inputText.replace(/[^0-9]/g, ''));
   };
+
+  const resetInputHandler = (): void => {
+    setEnteredValue('');
+    setConfirmed(false);
+  };
+  
+  const confirmInputHandler = (): void => {
+    const chosenNumber = parseInt(enteredValue, 10);
+    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+      return;
+    }
+
+    setConfirmed(true);
+    setCelectedNumber(chosenNumber);
+    setEnteredValue('');
+  };
+
+  let confirmedOutput: ReactElement | undefined;
+
+  if (confirmed) {
+    confirmedOutput = <Text>Chosen Number: {selectedNumber}</Text>
+  }
 
   return (
     <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
@@ -30,13 +54,14 @@ export const StartGameScreen: FC = () => {
           />
           <View style={styles.buttonContainer}>
             <View style={styles.button}>
-              <Button title="Reset" onPress={() => { }} color={Colors.accent} />
+              <Button title="Reset" onPress={resetInputHandler} color={Colors.accent} />
             </View>
             <View style={styles.button}>
-              <Button title="Confirm" onPress={() => { }} color={Colors.primary} />
+              <Button title="Confirm" onPress={confirmInputHandler} color={Colors.primary} />
             </View>
           </View>
         </Card>
+        {confirmedOutput}
       </View>
     </TouchableWithoutFeedback>
   )
