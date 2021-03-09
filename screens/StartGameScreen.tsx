@@ -9,7 +9,7 @@ import Colors from '../constants/colors';
 export const StartGameScreen: FC = () => {
   const [enteredValue, setEnteredValue] = useState('');
   const [confirmed, setConfirmed] = useState(false);
-  const [selectedNumber, setCelectedNumber] = useState(0);
+  const [selectedNumber, setCelectedNumber] = useState<number>();
 
   const numberInputHandler = (inputText: string): void => {
     setEnteredValue(inputText.replace(/[^0-9]/g, ''));
