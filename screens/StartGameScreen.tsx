@@ -5,6 +5,7 @@ import { Card } from '../components/Card';
 import { Input } from '../components/Input';
 import { NumberContainer } from '../components/NumberContainer';
 import Colors from '../constants/colors';
+import fonts from '../constants/fonts';
 
 export const StartGameScreen: FC<{ onStartGame: (selectedNumber: number) => void }> = ({ onStartGame }) => {
   const [enteredValue, setEnteredValue] = useState('');
@@ -54,7 +55,7 @@ export const StartGameScreen: FC<{ onStartGame: (selectedNumber: number) => void
       <View style={styles.screen}>
         <Text style={styles.title}>Start a New Game!</Text>
         <Card style={styles.inputContainer}>
-          <Text>Select a Number</Text>
+          <Text style={styles.text}>Select a Number</Text>
           <Input
             style={styles.input}
             blurOnSubmit
@@ -99,7 +100,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    marginVertical: 10
+    marginVertical: 10,
+    fontFamily: fonts.bold
   },
   button: {
     width: 90
@@ -111,5 +113,8 @@ const styles = StyleSheet.create({
   summaryContainer: {
     marginTop: 20,
     alignItems: 'center'
+  },
+  text: {
+    fontFamily: fonts.regular
   }
 });

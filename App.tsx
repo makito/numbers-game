@@ -1,14 +1,26 @@
 import React, { FC, useState } from 'react';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 import { Screen } from './components/Screen';
 import { Header } from './components/Header';
 import { StartGameScreen } from './screens/StartGameScreen';
 import { GameScreen } from './screens/GameScreen';
 import { GameOverScreen } from './screens/GameOverScreen';
+import fonts from './constants/fonts';
 
 const App: FC = () => {
   const [userNumber, setUserNumber] = useState<number | null>(null);
   const [guessRounds, setGuessRounds] = useState(0);
+
+  const [fontsLoaded] = useFonts({
+    [fonts.regular]: require('./assets/fonts/OpenSans-Regular.ttf'),
+    [fonts.bold]: require('./assets/fonts/OpenSans-Bold.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   const startGameHandler = (selectedNumber: number): void => {
     setUserNumber(selectedNumber);

@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import Colors from '../constants/colors';
+import fonts from '../constants/fonts';
 
 export const Header: FC<{ title: string }> = ({ title }) => (
   <View style={styles.header}>
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: 'white',
-    fontSize: 18
+    fontSize: 18,
+    fontFamily: fonts.bold
   }
 });
