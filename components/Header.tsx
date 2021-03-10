@@ -2,11 +2,11 @@ import React, { FC } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import Colors from '../constants/colors';
-import fonts from '../constants/fonts';
+import { TitleText } from './TitleText';
 
 export const Header: FC<{ title: string }> = ({ title }) => (
   <View style={styles.header}>
-    <Text style={styles.headerTitle}>{title}</Text>
+    <TitleText style={styles.headerTitle}>{title}</TitleText>
   </View>
 );
 
@@ -20,8 +20,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   headerTitle: {
-    color: 'white',
-    fontSize: 18,
-    fontFamily: fonts.bold
+    color: 'white'
   }
 });
