@@ -5,6 +5,7 @@ import Colors from '../constants/colors';
 import { BodyText } from '../components/BodyText';
 import { TitleText } from '../components/TitleText';
 import { MainButton } from '../components/MainButton';
+import Fonts from '../constants/fonts';
 
 export const GameOverScreen: FC<{ roundsNumber: number; userNumber: number; onNewGame: () => void }> = ({ roundsNumber, userNumber, onNewGame }) => {
   return (
@@ -13,6 +14,9 @@ export const GameOverScreen: FC<{ roundsNumber: number; userNumber: number; onNe
       <View style={styles.imageContainer}>
         <Image source={require('../assets/success.jpg')} style={styles.image} resizeMode="cover" />
       </View>
+      <BodyText style={styles.text}>
+        Your phone needed <BodyText style={styles.textAccent}>{roundsNumber}</BodyText> rounds to guess the number <BodyText style={styles.textAccent}>{userNumber}</BodyText>
+      </BodyText>
       <MainButton onPress={onNewGame} style={styles.button}>New Game</MainButton>
     </View>
   )
@@ -40,5 +44,13 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20
   },
+  text: {
+    fontSize: 18,
+    textAlign: 'center',
+    maxWidth: '80%'
+  },
+  textAccent: {
+    color: Colors.accent,
+    fontFamily: Fonts.bold
   }
 });
