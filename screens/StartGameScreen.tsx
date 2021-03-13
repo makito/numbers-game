@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useState } from 'react';
-import { StyleSheet, View, Text, Button, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
+import { StyleSheet, View, Button, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 
 import { Card } from '../components/Card';
 import { Input } from '../components/Input';
@@ -7,6 +7,7 @@ import { NumberContainer } from '../components/NumberContainer';
 import Colors from '../constants/colors';
 import { BodyText } from '../components/BodyText';
 import { TitleText } from '../components/TitleText';
+import { MainButton } from '../components/MainButton';
 
 export const StartGameScreen: FC<{ onStartGame: (selectedNumber: number) => void }> = ({ onStartGame }) => {
   const [enteredValue, setEnteredValue] = useState('');
@@ -46,7 +47,7 @@ export const StartGameScreen: FC<{ onStartGame: (selectedNumber: number) => void
       <Card style={styles.summaryContainer}>
         <TitleText>You selected</TitleText>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <Button title="Start Game" onPress={() => onStartGame(selectedNumber as number)} color={Colors.primary} />
+        <MainButton onPress={() => onStartGame(selectedNumber as number)}>Start Game</MainButton>
       </Card>
     );
   }

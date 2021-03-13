@@ -1,20 +1,19 @@
 import React, { FC } from 'react';
-import { StyleSheet, View, Button, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
 import Colors from '../constants/colors';
 import { BodyText } from '../components/BodyText';
 import { TitleText } from '../components/TitleText';
+import { MainButton } from '../components/MainButton';
 
 export const GameOverScreen: FC<{ roundsNumber: number; userNumber: number; onNewGame: () => void }> = ({ roundsNumber, userNumber, onNewGame }) => {
   return (
     <View style={styles.screen}>
-      <Button title="New Game" onPress={onNewGame} />
       <TitleText>The Game is Over!</TitleText>
       <View style={styles.imageContainer}>
         <Image source={require('../assets/success.jpg')} style={styles.image} resizeMode="cover" />
       </View>
-      <BodyText>Number of rounds: {roundsNumber}</BodyText>
-      <BodyText>Number was: {userNumber}</BodyText>
+      <MainButton onPress={onNewGame} style={styles.button}>New Game</MainButton>
     </View>
   )
 };
@@ -37,5 +36,9 @@ const styles = StyleSheet.create({
     height: 300,
     overflow: 'hidden',
     marginVertical: 20
+  },
+  button: {
+    marginTop: 20
+  },
   }
 });
