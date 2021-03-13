@@ -22,7 +22,7 @@ const App: FC = () => {
     return <AppLoading />;
   }
 
-  const startGameHandler = (selectedNumber: number): void => {
+  const startGameHandler = (selectedNumber: number | null): void => {
     setUserNumber(selectedNumber);
     setGuessRounds(0);
   };

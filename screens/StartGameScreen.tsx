@@ -9,10 +9,10 @@ import { BodyText } from '../components/BodyText';
 import { TitleText } from '../components/TitleText';
 import { MainButton } from '../components/MainButton';
 
-export const StartGameScreen: FC<{ onStartGame: (selectedNumber: number) => void }> = ({ onStartGame }) => {
+export const StartGameScreen: FC<{ onStartGame: (selectedNumber: number | null) => void }> = ({ onStartGame }) => {
   const [enteredValue, setEnteredValue] = useState('');
   const [confirmed, setConfirmed] = useState(false);
-  const [selectedNumber, setCelectedNumber] = useState<number>();
+  const [selectedNumber, setCelectedNumber] = useState<number | null>(null);
 
   const numberInputHandler = (inputText: string): void => {
     setEnteredValue(inputText.replace(/[^0-9]/g, ''));
@@ -47,7 +47,7 @@ export const StartGameScreen: FC<{ onStartGame: (selectedNumber: number) => void
       <Card style={styles.summaryContainer}>
         <TitleText>You selected</TitleText>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <MainButton onPress={() => onStartGame(selectedNumber as number)}>Start Game</MainButton>
+        <MainButton onPress={() => onStartGame(selectedNumber)}>Start Game</MainButton>
       </Card>
     );
   }
